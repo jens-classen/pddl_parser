@@ -152,7 +152,7 @@ def PDDL_BNF():
         letter = Char(alphas)
         
         any_char = letter | digit | DASH | UNDERSCORE
-        name = Combine(letter + ZeroOrMore(any_char))
+        name = Combine(letter + ZeroOrMore(any_char)).set_parse_action(pyparsing_common.downcase_tokens)
         
         require_key = one_of([
             ":strips",
